@@ -40,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
                 style: TextStyle(color: Colors.white, fontSize: 15),
               ),
               Container(
-                height: MediaQuery.of(context).size.height / 1.9,
+                height: MediaQuery.of(context).size.height / 2.2,
                 width: MediaQuery.of(context).size.width / 1.2,
                 decoration: BoxDecoration(
                   boxShadow: [
@@ -81,10 +81,18 @@ class _LoginViewState extends State<LoginView> {
                     TextField(
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email_outlined),
-                        labelText: 'Enter your email',
+                        hintText: 'Enter your email',
                         labelStyle: TextStyle(color: Colors.black),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(width: 1.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: Colors.purple.shade300,
+                            width: 2.0,
+                          ),
                         ),
                       ),
                     ),
@@ -97,10 +105,18 @@ class _LoginViewState extends State<LoginView> {
                     TextField(
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock_outline),
-                        labelText: 'Password',
+                        hintText: 'Enter your password',
                         labelStyle: TextStyle(color: Colors.black),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(width: 1.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: Colors.purple.shade300,
+                            width: 2.0,
+                          ),
                         ),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -108,36 +124,52 @@ class _LoginViewState extends State<LoginView> {
                               obscureText = !obscureText;
                             });
                           },
-                          icon: Icon(obscureText ? Icons.visibility_off : Icons.visibility),
+                          icon: Icon(
+                            obscureText
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                          ),
                         ),
                       ),
                       obscureText: obscureText,
-                      
                     ),
                     SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Add your login logic here
-                      },
-                      child: Text('Login'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.blue.shade300,
+                            Colors.purple.shade300,
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Add your login logic here
+                        },
+                        child: Text('Login'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          foregroundColor: Colors.white,
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(height: 10),
-                    TextButton(
-                      onPressed: () {
-                        // Add your forgot password logic here
-                      },
-                      child: Text('Forgot Password?'),
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.black,
-                      ),
-                    ),
+                    // TextButton(
+                    //   onPressed: () {
+                    //     // Add your forgot password logic here
+                    //   },
+                    //   child: Text('Forgot Password?'),
+                    //   style: TextButton.styleFrom(
+                    //     foregroundColor: Colors.black,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
