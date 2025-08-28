@@ -27,10 +27,16 @@ class Book {
       pages: json['pages'],
       title: json['title'],
       author: json['author'],
-      cover: json['cover'],
+      cover: _buildCoverUrl(json['id'], json['cover']),
       description: json['description'],
       language: json['language'],
       publication: json['publication'],
     );
+  }
+
+  static String _buildCoverUrl(String recordId, String filename) {
+    if (filename.isEmpty) return '';
+    const baseUrl = 'http://127.0.0.1:8090/api';
+    return '$baseUrl/files/books/$recordId/$filename';
   }
 }

@@ -143,7 +143,7 @@ class BookCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         child: Stack(
           children: [
-            // Background image with error handling
+            ////////////// Background image with error handling///////
             Positioned.fill(
               child: Image.network(
                 cover,
@@ -221,6 +221,9 @@ class BookCard extends StatelessWidget {
                         backgroundColor: Colors.blue,
                         foregroundColor: Colors.white,
                         minimumSize: const Size(double.infinity, 32),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
                       ),
                       child: Row(
                         children: [
