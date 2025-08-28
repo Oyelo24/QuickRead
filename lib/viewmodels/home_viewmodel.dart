@@ -1,19 +1,20 @@
-import '../models/user.dart';
-import '../services/api_service.dart';
+import '../models/book.dart';
+import '../services/http_service.dart';
 import 'base_viewmodel.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final ApiService _apiService = ApiService();
-  User? _user;
+  final HttpService _httpService = HttpService();
+  List<Book> _books = [];
 
-  User? get user => _user;
+  List<Book> get books => _books;
 
-  Future<void> loadUser(String id) async {
+  Future<void> loadBooks() async {
     setLoading(true);
     clearError();
     
     try {
-      _user = await _apiService.getUser(id);
+      final booksData = await _httpService.fetchBooks();
+      _books = booksData.map((json) => Book.fromJson(json)).toList();
     } catch (e) {
       setError(e.toString());
     } finally {
